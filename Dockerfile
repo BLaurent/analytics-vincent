@@ -1,6 +1,6 @@
 FROM jupyter/minimal-notebook:latest
 
-RUN conda install --quiet --yes -c conda-forge fbprophet pandas scikit-learn keras plotnine && \
+RUN conda install --quiet --yes -c conda-forge fbprophet pandas scikit-learn tensorflow keras plotnine && \
     conda remove --quiet --yes --force qt pyqt && \
     conda clean -tipsy
 
@@ -19,6 +19,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EEA14886 && \
 RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
 RUN echo "deb http://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 RUN sudo apt-get -y -qq update && sudo apt-get -y -qq install cf-cli git nano vim
+
+RUN sudo pip --no-cache-dir install \
+    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
 
 RUN apt-get -y -qq clean && \
   rm -rf /var/lib/apt/lists/*
