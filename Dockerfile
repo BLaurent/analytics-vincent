@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook:latest
+FROM jupyter/datascience-notebook:latest
 
 RUN conda install --quiet --yes -c conda-forge fbprophet pandas scikit-learn tensorflow keras plotnine && \
     conda remove --quiet --yes --force qt pyqt && \
