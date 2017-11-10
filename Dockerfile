@@ -20,9 +20,6 @@ RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.k
 RUN echo "deb http://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 RUN apt-get -y -qq update && apt-get -y -qq install cf-cli git nano vim
 
-RUN pip --no-cache-dir install \
-    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
-
 RUN apt-get -y -qq clean && \
   rm -rf /var/lib/apt/lists/*
 
