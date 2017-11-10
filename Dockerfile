@@ -8,7 +8,7 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y clean
 RUN apt-get -y update
-RUN  apt-get install -y -qq wget curl apt-transport-https
+RUN apt-get install -y -qq wget curl apt-transport-https
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EEA14886 && \
   echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list && \
   apt-get update -qq -y && \
@@ -18,7 +18,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EEA14886 && \
 
 RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
 RUN echo "deb http://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-RUN sudo apt-get -y -qq update && sudo apt-get -y -qq install cf-cli git nano vim
+RUN apt-get -y -qq update && apt-get -y -qq install cf-cli git nano vim
 
 RUN pip --no-cache-dir install \
     http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
